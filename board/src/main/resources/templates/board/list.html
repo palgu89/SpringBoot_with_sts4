@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout :: setFragment(~{this::content})}">
+	<th:block th:fragment="content">
+	
+	<h2>Board List</h2>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Title</th>
+				<th>Writer</th>
+				<th>Readcount</th>
+				<th>Last Update</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="dto : ${list}">
+				<td>[[${dto.pno}]]</td>
+				<td><a th:href="@{/board/detail(pno=${dto.pno})}">[[${dto.title}]]</a></td>
+				<td>[[${dto.writer}]]</td>
+				<td>[[${dto.readcount}]]</td>
+				<td>[[${dto.modAt}]]</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<!-- th문법으로 tr 자체를 forEach처럼 반복해서 돌릴 수 있다. list를 받아서 dto란 이름으로 반복 -->
+	<!-- a 주소 뒤로 값 더 받고 싶으면 ()안에 , 로 이어 나가면 된다. bno=${}, page=${} ... -->
+	<!-- [] 두개짜리는 html에 표현하고 싶을 때 사용 -->
+	<!--/* th 주석 */-->
+	<!--/*/
+		<div>
+		/*/-->
+	</th:block>
+</th:block>
